@@ -10,7 +10,7 @@ RUN mvn dependency:go-offline
 
 # Copiamos el código fuente
 COPY src /app/src
-
+ 
 # Compilamos la aplicación
 RUN mvn package -DskipTests
 
