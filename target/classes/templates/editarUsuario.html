@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${usuario.id == null} ? 'Nuevo Usuario' : 'Editar Usuario'">Editar Usuario</title>
+    <link rel="stylesheet" href="/static/administrador.css">
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="icon" type="image/x-icon" href="/static/img/libreria-digital.png">
+</head>
+<body>
+    <img src="/static/img/login-bg.png" alt="login image" class="login__img" style="height: 122%">
+    
+    <div class="container conts_pro" style="text-align: center">
+        <div class="admin-header" style="text-align: center">
+            <h2 th:text="${usuario.id == null} ? 'Nuevo Usuario' : 'Editar Usuario'"  style="color: white; text-align: center">Editar Usuario</h2>
+        </div>
+        
+        <!-- Mensaje de resultado -->
+        <div th:if="${mensaje}" class="mensaje" th:classappend="${tipoMensaje == 'error'} ? 'mensaje-error' : 'mensaje-exito'">
+            <p th:text="${mensaje}"></p>
+        </div>
+        
+        <form action="/admin/usuarios/guardar" method="post" class="edit-form" style="color: white">
+            <!-- Campo oculto para el ID -->
+            <input type="hidden" name="id" th:value="${usuario.id}" />
+            
+            <div class="form-group">
+                <label for="nombre" style="color: white">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" th:value="${usuario.nombre}" required />
+            </div>
+            
+            <div class="form-group">
+                <label for="email" style="color: white">Email:</label>
+                <input type="email" id="email" name="email" th:value="${usuario.email}" required />
+            </div>
+            
+            <div class="form-group">
+                <label for="password" style="color: white">Contraseña:</label>
+                <input type="password" id="password" name="password" placeholder="Dejar en blanco para mantener la actual" th:required="${usuario.id == null}" />
+                <small th:if="${usuario.id != null}">Dejar en blanco para mantener la contraseña actual</small>
+                <small th:if="${usuario.id == null}">La contraseña es obligatoria para nuevos usuarios</small>
+            </div>
+            
+            <div class="form-group">
+                <label style="color: white">Roles:</label>
+                <div class="roles-container">
+                    <div class="role-option" th:each="rol : ${todosLosRoles}">
+                        <input style="color: white; text-align: center"  type="checkbox" name="roles" th:id="${'rol-' + rol.id}" th:value="${rol.id}"
+                               th:checked="${usuario.roles != null && usuario.roles.contains(rol)}" />
+                        <label  style="color: white; text-align: center" th:for="${'rol-' + rol.id}" th:text="${rol.nombre == 'ROLE_ADMIN' ? 'Administrador' : 'Usuario'}"></label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <a href="/admin/usuarios" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
