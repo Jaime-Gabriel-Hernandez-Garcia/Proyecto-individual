@@ -46,7 +46,7 @@ public class PerfilController {
         if (usuario != null) {
             // Añadir los datos del usuario al modelo
             model.addAttribute("usuario", usuario);
-            model.addAttribute("tieneImagen", usuario.getImagen() != null);
+            //model.addAttribute("tieneImagen", usuario.getImagen() != null);
         }
         
         return "perfil";
