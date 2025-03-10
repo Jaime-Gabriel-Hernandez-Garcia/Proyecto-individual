@@ -1,6 +1,6 @@
 -- Eliminar la base de datos "practica2" si ya existe
 DROP DATABASE IF EXISTS practica2;
-
+ 
 -- Crear la base de datos "practica2" con codificación UTF-8
 CREATE DATABASE practica2 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
