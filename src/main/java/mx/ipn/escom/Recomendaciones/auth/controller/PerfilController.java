@@ -12,11 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+<<<<<<< HEAD
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+=======
+>>>>>>> d41205c ([868anun7j] Actualizar PerfilController para subir imágenes (#2))
 import java.io.IOException;
 import java.util.Base64;
 
@@ -178,29 +181,42 @@ public class PerfilController {
             if (imagen.isEmpty()) {
                 model.addAttribute("mensaje", "Error: Por favor selecciona una imagen.");
                 model.addAttribute("tipoMensaje", "error");
+<<<<<<< HEAD
                 model.addAttribute("usuario", usuario);
                 model.addAttribute("tieneImagen", usuario.getImagen() != null);
                 return "perfil";
             }
             
             // Verificar el tipo de archivo
+=======
+                return "perfil";
+            }
+            
+            // Verificar el tipo de archivo (opcional)
+>>>>>>> d41205c ([868anun7j] Actualizar PerfilController para subir imágenes (#2))
             String contentType = imagen.getContentType();
             if (contentType == null || !contentType.startsWith("image/")) {
                 model.addAttribute("mensaje", "Error: Por favor selecciona un archivo de imagen válido.");
                 model.addAttribute("tipoMensaje", "error");
+<<<<<<< HEAD
                 model.addAttribute("usuario", usuario);
                 model.addAttribute("tieneImagen", usuario.getImagen() != null);
+=======
+>>>>>>> d41205c ([868anun7j] Actualizar PerfilController para subir imágenes (#2))
                 return "perfil";
             }
             
             // Obtener los bytes de la imagen
             byte[] imagenBytes = imagen.getBytes();
             
+<<<<<<< HEAD
             // Redimensionar la imagen si es demasiado grande
             if (imagen.getSize() > MAX_FILE_SIZE) {
                 imagenBytes = redimensionarImagen(imagenBytes);
             }
             
+=======
+>>>>>>> d41205c ([868anun7j] Actualizar PerfilController para subir imágenes (#2))
             // Guardar la imagen en el usuario
             usuario.setImagen(imagenBytes);
             usuarioRepository.save(usuario);
@@ -208,18 +224,28 @@ public class PerfilController {
             // Añadir mensaje de éxito y datos del usuario al modelo
             model.addAttribute("mensaje", "¡Imagen de perfil actualizada con éxito!");
             model.addAttribute("tipoMensaje", "exito");
+<<<<<<< HEAD
             model.addAttribute("usuario", usuario);
+=======
+            model.addAttribute("nombre", usuario.getNombre());
+            model.addAttribute("email", usuario.getEmail());
+            model.addAttribute("id", usuario.getId());
+>>>>>>> d41205c ([868anun7j] Actualizar PerfilController para subir imágenes (#2))
             model.addAttribute("tieneImagen", true);
             
         } catch (IOException e) {
             model.addAttribute("mensaje", "Error al procesar la imagen: " + e.getMessage());
             model.addAttribute("tipoMensaje", "error");
+<<<<<<< HEAD
             model.addAttribute("usuario", usuario);
             model.addAttribute("tieneImagen", usuario.getImagen() != null);
+=======
+>>>>>>> d41205c ([868anun7j] Actualizar PerfilController para subir imágenes (#2))
         }
         
         return "perfil";
     }
+<<<<<<< HEAD
     
     /**
      * Redimensiona la imagen para reducir su tamaño
@@ -269,4 +295,6 @@ public class PerfilController {
         
         return bos.toByteArray();
     }
+=======
+>>>>>>> d41205c ([868anun7j] Actualizar PerfilController para subir imágenes (#2))
 }
