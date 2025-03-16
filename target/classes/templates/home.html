@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== BOOTSTRAP ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="static/img/libreria-digital.png">
+
+    <title>Sistema de Recomendaciones</title>
+</head>
+<body>
+<div class="col-12" >
+
+    <img src="static/img/login-bg.png" alt="login image" class="login__img" style="height: 109%">
+
+
+        <!--
+
+        <p class="welcome-message" sec:authentication="name">Bienvenido, Usuario</p>-->
+    <br>
+    <div class="row conts_rec" style="margin-left: 25px; margin-right: 25px; ">
+        <h1 class="login__title" >Sistema de Recomendaciones</h1>
+
+        <div class="col-md-4 " style="margin-right: 0px; margin-left: 0px; text-align: center; width: 110px">
+        </div>
+
+        <a class="col-md-4" href="/peliculas" style="color: white; margin-left: 0px;">
+            <div class="col-12 conts_pro" style="text-align: center;">
+                <h1 class="login__title" >Películas</h1>
+                <img width="200px" src="https://imgs.search.brave.com/aOuIlbzGaW7XeWH98WhQ_6FBIEGvNjOqnjUH49bbkVQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1qUTVNelF4/WlRFdE1tRTFZeTAw/TmpabExUazVPREl0/TmpJM01XSXhNamsx/TTJVNVhrRXlYa0Zx/Y0djQC5qcGc" />
+
+                <!--
+                <div class="login__content">
+                    Botones del menú
+                    <a href="/libros" class="login__button menu-button">
+                        <i class="ri-book-line login__icon"></i>
+                        <span>Libros</span>
+                    </a
+
+
+                    <a href="/peliculas" class="login__button menu-button">
+                        <i class="ri-movie-2-line login__icon"></i>
+                        <span>Películas</span>
+                    </a>
+
+                    <a href="/perfil" class="login__button menu-button">
+                        <i class="ri-user-line login__icon"></i>
+                        <span>Mi Perfil</span>
+                    </a>
+
+                    Botón de administración (solo para ADMIN)
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin/usuarios" class="login__button menu-button admin-button">
+                        <i class="ri-admin-line login__icon"></i>
+                        <span>Administración de Usuarios</span>
+                    </a>
+                </div>
+
+                Botón de cerrar sesión
+                <a href="/logout" class="login__register">
+                    <i class="ri-logout-box-r-line"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+                -->
+            </div>
+        </a>
+
+        <div class="col-md-4 " style="margin-right: 0px; margin-left: 0px; text-align: center; width: 200px">
+        </div>
+
+        <a class="col-md-4" href="/libros" style="color: white; margin-left: 0px">
+            <div class="col-12 conts_pro" style="margin-right: 0px; margin-left: 0px; text-align: center;">
+                <h1 class="login__title" >Libros</h1>
+                <img width="180px" src="https://imgs.search.brave.com/IMNOaq2IhQG2hhzdQvj-xiYAiNmH2nMEjvHwWaeDEvM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z29udmlsbC5jb20u/bXgvaW1hZ2VuZXMv/OTc4NjUwMC85Nzg2/NTAwNzM3MjYuSlBH" />
+
+                <!--
+               <div class="login__content">
+                   Botones del menú
+                    <a href="/libros" class="login__button menu-button">
+                        <i class="ri-book-line login__icon"></i>
+                        <span>Libros</span>
+                    </a>
+
+                    <a href="/peliculas" class="login__button menu-button">
+                        <i class="ri-movie-2-line login__icon"></i>
+                        <span>Películas</span>
+                    </a>
+
+                    <a href="/perfil" class="login__button menu-button">
+                        <i class="ri-user-line login__icon"></i>
+                        <span>Mi Perfil</span>
+                    </a>
+
+                     Botón de administración (solo para ADMIN)
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin/usuarios" class="login__button menu-button admin-button">
+                        <i class="ri-admin-line login__icon"></i>
+                        <span>Administración de Usuarios</span>
+                    </a>
+                </div>
+
+                 Botón de cerrar sesión
+                <a href="/logout" class="login__register">
+                    <i class="ri-logout-box-r-line"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+                -->
+            </div>
+        </a>
+
+        <a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin/usuarios" class="login__register  menu-button admin-button">
+            <i class="ri-admin-line login__icon"></i>
+            <span>Administración de Usuarios</span>
+        </a>
+
+        <a href="/logout" class="login__register">
+            <i class="ri-logout-box-r-line"></i>
+            <span>Cerrar Sesión</span>
+        </a>
+
+
+
+    </div>
+</div>
+
+<!--=============== MAIN JS ===============-->
+<script src="static/js/main.js"></script>
+</body>
+</html>
