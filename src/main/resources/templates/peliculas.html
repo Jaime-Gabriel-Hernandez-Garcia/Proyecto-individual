@@ -10,13 +10,13 @@
     <!--=============== REMIXICONS ===============-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <title>Búsqueda de Libros</title>
+    <title>Búsqueda de Películas</title>
     <link rel="icon" type="image/x-icon" href="static/img/libreria-digital.png">
 
     <style>
         :root {
-            --primary-color: #2b5790;
-            --secondary-color: #0d6efd;
+            --primary-color: #275eb0;
+            --secondary-color: #673ab7;
             --accent-color: #f8f9fa;
             --text-color: #333;
             --text-light: #fff;
@@ -124,17 +124,17 @@
         }
 
         .search-button:hover {
-            background-color: #1a2678;
+            background-color: #1f30a2;
         }
 
-        .book-grid {
+        .movie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
 
-        .book-card {
+        .movie-card {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
             overflow: hidden;
@@ -143,47 +143,56 @@
             position: relative;
         }
 
-        .book-card:hover {
+        .movie-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .book-cover {
-            height: 320px;
+        .movie-poster {
+            height: 400px;
             background-color: #e0e0e0;
             overflow: hidden;
         }
 
-        .book-cover img {
+        .movie-poster img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .book-info {
+        .movie-info {
             padding: 1.2rem;
         }
 
-        .book-title {
+        .movie-title {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 8px;
             color: var(--primary-color);
         }
 
-        .book-author {
+        .movie-director {
             font-size: 0.95rem;
             color: #666;
             margin-bottom: 8px;
         }
 
-        .book-year {
+        .movie-year {
             font-size: 0.9rem;
             color: #888;
             margin-bottom: 12px;
         }
 
-        .book-description {
+        .movie-rating {
+            font-size: 0.9rem;
+            color: #ff9800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .movie-overview {
             font-size: 0.9rem;
             color: #555;
             line-height: 1.5;
@@ -195,14 +204,14 @@
             -webkit-box-orient: vertical;
         }
 
-        .book-actions {
+        .movie-actions {
             display: flex;
             justify-content: space-between;
             margin-top: 15px;
             gap: 10px;
         }
 
-        .book-button {
+        .movie-button {
             flex: 1;
             padding: 8px 12px;
             border: none;
@@ -225,13 +234,13 @@
             background-color: #e0e0e0;
         }
 
-        .recommend-button {
+        .watch-button {
             background-color: var(--primary-color);
             color: white;
-        }
+        }       
 
-        .recommend-button:hover {
-            background-color: #1a2678;
+        .watch-button:hover {
+            background-color: #1f30a2;
         }
 
         .pagination {
@@ -326,6 +335,21 @@
             animation: spin 1s linear infinite;
         }
 
+        .movie-genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .genre-tag {
+            background-color: #f0f0f0;
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+            color: #555;
+        }
+
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
@@ -346,7 +370,7 @@
                 margin-right: auto;
             }
 
-            .book-grid {
+            .movie-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 2rem;
             }
@@ -362,15 +386,15 @@
                 font-size: 1.3rem;
             }
 
-            .book-cover {
-                height: 250px;
+            .movie-poster {
+                height: 300px;
             }
 
-            .book-title {
+            .movie-title {
                 font-size: 1.1rem;
             }
 
-            .book-actions {
+            .movie-actions {
                 flex-direction: column;
             }
         }
@@ -378,36 +402,44 @@
 </head>
 <body>
 <div class="main-container">
-    <img src="static/img/login-bg.png" alt="login image" class="login__img">
+    <img src="static/img/login-bg.png" alt="Cinema background" class="login__img">
 
     <div class="content-wrapper">
-        <h1 class="login__title">Búsqueda de Libros</h1>
+        <h1 class="login__title">Búsqueda de Películas</h1>
 
         <div class="search-section">
-            <h2 class="search-title">Encuentra tu próximo libro favorito</h2>
+            <h2 class="search-title">Encuentra tu próxima película favorita</h2>
             <div class="search-form">
                 <div class="form-group">
                     <label for="title">Título</label>
-                    <input type="text" id="title" placeholder="Ej: El señor de los anillos">
+                    <input type="text" id="title" placeholder="Ej: Jurassic Park">
                 </div>
                 <div class="form-group">
-                    <label for="author">Autor</label>
-                    <input type="text" id="author" placeholder="Ej: Gabriel García Márquez">
+                    <label for="year">Año</label>
+                    <input type="number" id="year" placeholder="Ej: 2023">
                 </div>
                 <div class="form-group">
-                    <label for="subject">Categoría</label>
-                    <select id="subject">
-                        <option value="">Todas las categorías</option>
-                        <option value="fiction">Ficción</option>
-                        <option value="fantasy">Fantasía</option>
-                        <option value="science_fiction">Ciencia Ficción</option>
-                        <option value="romance">Romance</option>
-                        <option value="thriller">Suspense</option>
-                        <option value="mystery">Misterio</option>
-                        <option value="horror">Terror</option>
-                        <option value="history">Historia</option>
-                        <option value="biography">Biografía</option>
-                        <option value="self_help">Autoayuda</option>
+                    <label for="genre">Género</label>
+                    <select id="genre">
+                        <option value="">Todos los géneros</option>
+                        <option value="28">Acción</option>
+                        <option value="12">Aventura</option>
+                        <option value="16">Animación</option>
+                        <option value="35">Comedia</option>
+                        <option value="80">Crimen</option>
+                        <option value="99">Documental</option>
+                        <option value="18">Drama</option>
+                        <option value="10751">Familia</option>
+                        <option value="14">Fantasía</option>
+                        <option value="36">Historia</option>
+                        <option value="27">Terror</option>
+                        <option value="10402">Música</option>
+                        <option value="9648">Misterio</option>
+                        <option value="10749">Romance</option>
+                        <option value="878">Ciencia Ficción</option>
+                        <option value="53">Thriller</option>
+                        <option value="10752">Bélica</option>
+                        <option value="37">Western</option>
                     </select>
                 </div>
                 <button id="searchButton" class="search-button">
@@ -419,12 +451,12 @@
 
         <div id="loading" class="loading">
             <div class="loading-spinner"></div>
-            <p>Buscando libros...</p>
+            <p>Buscando películas...</p>
         </div>
 
         <div id="resultsSection" class="results-section" style="display: none;">
             <h2 class="login__title">Resultados de la búsqueda</h2>
-            <div id="bookGrid" class="book-grid">
+            <div id="movieGrid" class="movie-grid">
                 <!-- Los resultados de búsqueda se mostrarán aquí -->
             </div>
 
@@ -451,25 +483,51 @@
     document.addEventListener('DOMContentLoaded', function() {
         const searchButton = document.getElementById('searchButton');
         const titleInput = document.getElementById('title');
-        const authorInput = document.getElementById('author');
-        const subjectInput = document.getElementById('subject');
-        const bookGrid = document.getElementById('bookGrid');
+        const yearInput = document.getElementById('year');
+        const genreInput = document.getElementById('genre');
+        const movieGrid = document.getElementById('movieGrid');
         const resultsSection = document.getElementById('resultsSection');
         const noResults = document.getElementById('noResults');
         const loading = document.getElementById('loading');
         const pagination = document.getElementById('pagination');
 
+        // API Key - Deberías manejar esto en el backend en producción
+        const API_KEY = '6164641ad2245dee20d207345644b9f3';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
         let currentPage = 1;
-        const itemsPerPage = 10;
         let totalResults = 0;
-        let allBooks = [];
+        let totalPages = 0;
+
+        // Mapa de géneros para mostrar nombres en lugar de IDs
+        const genreMap = {
+            28: 'Acción',
+            12: 'Aventura',
+            16: 'Animación',
+            35: 'Comedia',
+            80: 'Crimen',
+            99: 'Documental',
+            18: 'Drama',
+            10751: 'Familia',
+            14: 'Fantasía',
+            36: 'Historia',
+            27: 'Terror',
+            10402: 'Música',
+            9648: 'Misterio',
+            10749: 'Romance',
+            878: 'Ciencia Ficción',
+            53: 'Thriller',
+            10752: 'Bélica',
+            37: 'Western'
+        };
 
         searchButton.addEventListener('click', function() {
             performSearch(1);
         });
 
         // Permitir la búsqueda al presionar Enter en los campos de texto
-        [titleInput, authorInput].forEach(input => {
+        [titleInput, yearInput].forEach(input => {
             input.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     performSearch(1);
@@ -479,10 +537,10 @@
 
         function performSearch(page) {
             const title = titleInput.value.trim();
-            const author = authorInput.value.trim();
-            const subject = subjectInput.value;
+            const year = yearInput.value.trim();
+            const genre = genreInput.value;
 
-            if (title === '' && author === '' && subject === '') {
+            if (title === '' && year === '' && genre === '') {
                 alert('Por favor, ingresa al menos un criterio de búsqueda');
                 return;
             }
@@ -492,29 +550,28 @@
             resultsSection.style.display = 'none';
             noResults.style.display = 'none';
 
-            // Construir la URL de búsqueda
-            let searchQuery = [];
+            // Construir la URL de búsqueda según TMDB API
+            let apiUrl = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=es-ES&page=${page}`;
 
+            // Agregar parámetros de búsqueda
             if (title) {
-                searchQuery.push(`title=${encodeURIComponent(title)}`);
+                apiUrl += `&query=${encodeURIComponent(title)}`;
             }
 
-            if (author) {
-                searchQuery.push(`author=${encodeURIComponent(author)}`);
+            if (year) {
+                apiUrl += `&year=${year}`;
             }
 
-            if (subject) {
-                searchQuery.push(`subject=${encodeURIComponent(subject)}`);
+            // Si hay un género seleccionado, lo agregamos como parámetro
+            if (genre) {
+                apiUrl += `&with_genres=${genre}`;
             }
 
-            // Si hay título, autor o categoría específicos, usamos los parámetros correspondientes
-            // Si no, usamos un término de búsqueda general
-            let apiUrl;
-            if (searchQuery.length > 0) {
-                apiUrl = `https://openlibrary.org/search.json?${searchQuery.join('&')}&page=${page}`;
-            } else {
-                // Búsqueda general si no hay criterios específicos
-                apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(title || author || '')}`;
+            // Si no hay título pero hay otros parámetros, usamos discover en lugar de search
+            if (!title && (year || genre)) {
+                apiUrl = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=es-ES&page=${page}`;
+                if (year) apiUrl += `&year=${year}`;
+                if (genre) apiUrl += `&with_genres=${genre}`;
             }
 
             fetch(apiUrl)
@@ -528,14 +585,15 @@
                     // Ocultar loader
                     loading.style.display = 'none';
 
-                    if (data.docs && data.docs.length > 0) {
-                        // Guardar todos los libros y la página actual
-                        allBooks = data.docs;
+                    if (data.results && data.results.length > 0) {
+                        // Guardar resultados y actualizar variables de paginación
                         currentPage = page;
-                        totalResults = data.numFound;
+                        totalResults = data.total_results;
+                        totalPages = data.total_pages;
 
                         // Mostrar resultados
-                        displayBooks(allBooks);
+                        displayMovies(data.results);
+
                         // Actualizar paginación
                         updatePagination();
 
@@ -549,71 +607,89 @@
                 .catch(error => {
                     console.error('Error:', error);
                     loading.style.display = 'none';
-                    alert('Ocurrió un error al buscar los libros. Por favor, intenta de nuevo.');
+                    alert('Ocurrió un error al buscar las películas. Por favor, intenta de nuevo.');
                 });
         }
 
-        function displayBooks(books) {
-            // Limpiar el contenedor de libros
-            bookGrid.innerHTML = '';
+        function displayMovies(movies) {
+            // Limpiar el contenedor de películas
+            movieGrid.innerHTML = '';
 
-            // Mostrar los libros
-            books.forEach(book => {
-                // Crear elemento de tarjeta para el libro
-                const bookCard = document.createElement('div');
-                bookCard.className = 'book-card';
+            // Mostrar las películas
+            movies.forEach(movie => {
+                // Crear elemento de tarjeta para la película
+                const movieCard = document.createElement('div');
+                movieCard.className = 'movie-card';
 
-                // Obtener la imagen de la portada si está disponible
-                let coverUrl = '/api/placeholder/250/300';
-                if (book.cover_i) {
-                    coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+                // Obtener la imagen del poster si está disponible
+                let posterUrl = '/api/placeholder/300/450';
+                if (movie.poster_path) {
+                    posterUrl = `${IMAGE_BASE_URL}${movie.poster_path}`;
                 }
 
-                // Obtener el año de publicación si está disponible
-                let publishYear = book.first_publish_year || (book.publish_year ? book.publish_year[0] : 'Desconocido');
+                // Obtener el año de lanzamiento si está disponible
+                let releaseYear = 'Desconocido';
+                if (movie.release_date) {
+                    releaseYear = movie.release_date.split('-')[0];
+                }
 
-                // Obtener autores si están disponibles
-                let authors = book.author_name ? book.author_name.join(', ') : 'Autor desconocido';
+                // Obtener la calificación
+                let rating = movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A';
 
-                // Obtener descripción o usar un placeholder
-                let description = 'No hay descripción disponible para este libro.';
+                // Obtener géneros
+                let genresHtml = '';
+                if (movie.genre_ids && movie.genre_ids.length > 0) {
+                    genresHtml = '<div class="movie-genres">';
+                    movie.genre_ids.forEach(genreId => {
+                        if (genreMap[genreId]) {
+                            genresHtml += `<span class="genre-tag">${genreMap[genreId]}</span>`;
+                        }
+                    });
+                    genresHtml += '</div>';
+                }
+
+                // Descripción o sinopsis
+                let overview = movie.overview || 'No hay sinopsis disponible para esta película.';
 
                 // Estructura HTML de la tarjeta
-                bookCard.innerHTML = `
-                    <div class="book-cover">
-                        <img src="${coverUrl}" alt="Portada de ${book.title}" onerror="this.src='/api/placeholder/250/300'">
+                movieCard.innerHTML = `
+                    <div class="movie-poster">
+                        <img src="${posterUrl}" alt="Poster de ${movie.title}" onerror="this.src='/api/placeholder/300/450'">
                     </div>
-                    <div class="book-info">
-                        <h3 class="book-title">${book.title}</h3>
-                        <p class="book-author">${authors}</p>
-                        <p class="book-year">${publishYear}</p>
-                        <p class="book-description">${description}</p>
-                        <div class="book-actions">
-                            <button class="book-button details-button" data-key="${book.key}">
+                    <div class="movie-info">
+                        <h3 class="movie-title">${movie.title}</h3>
+                        <p class="movie-year">${releaseYear}</p>
+                        <div class="movie-rating">
+                            <i class="ri-star-fill"></i> ${rating}
+                        </div>
+                        ${genresHtml}
+                        <p class="movie-overview">${overview}</p>
+                        <div class="movie-actions">
+                            <button class="movie-button details-button" data-id="${movie.id}">
                                 <i class="ri-information-line"></i> Ver detalles
                             </button>
-                            <button class="book-button recommend-button" data-key="${book.key}">
-                                <i class="ri-star-line"></i> Recomendar
+                            <button class="movie-button watch-button" data-id="${movie.id}">
+                                <i class="ri-play-circle-line"></i> Ver ahora
                             </button>
                         </div>
                     </div>
                 `;
 
                 // Agregar evento para el botón de detalles
-                bookCard.querySelector('.details-button').addEventListener('click', function() {
-                    const key = this.getAttribute('data-key');
-                    window.open(`https://openlibrary.org${key}`, '_blank');
+                movieCard.querySelector('.details-button').addEventListener('click', function() {
+                    const movieId = this.getAttribute('data-id');
+                    window.open(`https://www.themoviedb.org/movie/${movieId}`, '_blank');
                 });
 
-                // Agregar evento para el botón de recomendar
-                bookCard.querySelector('.recommend-button').addEventListener('click', function() {
-                    const key = this.getAttribute('data-key');
-                    alert(`Libro recomendado: ${book.title}`);
-                    // Aquí podrías implementar la lógica para guardar la recomendación en tu backend
+                // Agregar evento para el botón de ver ahora
+                movieCard.querySelector('.watch-button').addEventListener('click', function() {
+                    const movieId = this.getAttribute('data-id');
+                    alert(`Película seleccionada: ${movie.title}`);
+                    // Aquí podrías implementar la lógica para dirigir a la vista de reproducción
                 });
 
                 // Agregar la tarjeta al grid
-                bookGrid.appendChild(bookCard);
+                movieGrid.appendChild(movieCard);
             });
         }
 
@@ -621,15 +697,12 @@
             // Limpiar paginación
             pagination.innerHTML = '';
 
-            // Calcular número total de páginas
-            const totalPages = Math.ceil(totalResults / itemsPerPage);
-
             // Si hay muchas páginas, mostrar solo un subconjunto
             let startPage = Math.max(1, currentPage - 2);
             let endPage = Math.min(totalPages, currentPage + 2);
 
             // Asegurar que siempre se muestren al menos 5 páginas si están disponibles
-            if (endPage - startPage < 4) {
+            if (endPage - startPage < 4 && totalPages > 5) {
                 if (startPage === 1) {
                     endPage = Math.min(5, totalPages);
                 } else {

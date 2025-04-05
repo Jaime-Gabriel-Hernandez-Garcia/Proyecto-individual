@@ -3,155 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== BOOTSTRAP ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
     <title>Búsqueda de Libros</title>
+    <link rel="icon" type="image/x-icon" href="static/img/libreria-digital.png">
+
     <style>
+        :root {
+            --primary-color: #2b5790;
+            --secondary-color: #0d6efd;
+            --accent-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #fff;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
+            background-color: #f5f7fa;
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        
-        .header {
-            background-color: #1a237e;
-            color: white;
+
+        .main-container {
+            position: relative;
             width: 100%;
-            padding: 1rem 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .login__img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 1rem;
+        }
+
+        .login__title {
+            color: var(--text-light);
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
+
         .search-section {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
+
         .search-title {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: #333;
+            color: var(--primary-color);
+            text-align: center;
+            font-weight: 600;
         }
-        
+
         .search-form {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
         }
-        
+
         .form-group {
             flex: 1;
             min-width: 200px;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
             color: #555;
         }
-        
+
         .form-group input, .form-group select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 16px;
         }
-        
+
         .search-button {
-            background-color: #3f51b5;
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
             margin-top: 24px;
-            height: 42px;
-        }
-        
-        .search-button:hover {
-            background-color: #303f9f;
-        }
-        
-        .results-section {
-            margin-top: 30px;
-        }
-        
-        .results-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .book-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .book-cover {
-            height: 300px;
-            background-color: #e0e0e0;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 0.5rem;
+            min-width: 200px;
+        }
+
+        .search-button:hover {
+            background-color: #1a2678;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .book-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-cover {
+            height: 320px;
+            background-color: #e0e0e0;
             overflow: hidden;
         }
-        
+
         .book-cover img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .book-info {
-            padding: 15px;
+            padding: 1.2rem;
         }
-        
+
         .book-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 8px;
-            color: #333;
+            color: var(--primary-color);
         }
-        
+
         .book-author {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #666;
             margin-bottom: 8px;
         }
-        
+
         .book-year {
             font-size: 0.9rem;
             color: #888;
             margin-bottom: 12px;
         }
-        
+
         .book-description {
             font-size: 0.9rem;
             color: #555;
@@ -163,126 +194,197 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
         }
-        
+
         .book-actions {
             display: flex;
             justify-content: space-between;
             margin-top: 15px;
+            gap: 10px;
         }
-        
+
         .book-button {
+            flex: 1;
             padding: 8px 12px;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
-        
+
         .details-button {
             background-color: #f5f5f5;
             color: #333;
         }
-        
+
         .details-button:hover {
             background-color: #e0e0e0;
         }
-        
+
         .recommend-button {
-            background-color: #3f51b5;
+            background-color: var(--primary-color);
             color: white;
         }
-        
+
         .recommend-button:hover {
-            background-color: #303f9f;
+            background-color: #1a2678;
         }
-        
+
         .pagination {
             display: flex;
             justify-content: center;
             margin-top: 30px;
+            margin-bottom: 30px;
             gap: 5px;
         }
-        
+
         .pagination-button {
             padding: 8px 12px;
             border: 1px solid #ddd;
             background-color: white;
             color: #333;
-            border-radius: 4px;
+            border-radius: 50px;
             cursor: pointer;
             transition: background-color 0.3s;
+            min-width: 40px;
+            text-align: center;
         }
-        
+
         .pagination-button:hover {
             background-color: #f5f5f5;
         }
-        
+
         .pagination-button.active {
-            background-color: #3f51b5;
+            background-color: var(--primary-color);
             color: white;
-            border-color: #3f51b5;
+            border-color: var(--primary-color);
         }
-        
+
         .no-results {
             text-align: center;
             padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 500px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #666;
             display: none;
         }
-        
-        .navigation-buttons {
+
+        .action-buttons {
             display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2.5rem;
+            gap: 1.2rem;
         }
-        
-        .back-button {
-            background-color: #f5f5f5;
-            color: #333;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+
+        .btn-action {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
+            font-weight: 600;
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+            font-size: 1.1rem;
         }
-        
-        .back-button:hover {
-            background-color: #e0e0e0;
+
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
         }
-        
+
+        .btn-back:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+
         .loading {
             text-align: center;
             padding: 20px;
             display: none;
+            color: white;
         }
-        
+
         .loading-spinner {
             width: 40px;
             height: 40px;
             margin: 0 auto;
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: #3f51b5;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-left-color: white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .login__title {
+                font-size: 1.8rem;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-button {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .book-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .login__title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .search-title {
+                font-size: 1.3rem;
+            }
+
+            .book-cover {
+                height: 250px;
+            }
+
+            .book-title {
+                font-size: 1.1rem;
+            }
+
+            .book-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Búsqueda de Libros</h1>
-    </div>
-    
-    <div class="container">
+<div class="main-container">
+    <img src="static/img/login-bg.png" alt="login image" class="login__img">
+
+    <div class="content-wrapper">
+        <h1 class="login__title">Búsqueda de Libros</h1>
+
         <div class="search-section">
-            <h2 class="search-title">Buscar Libros</h2>
+            <h2 class="search-title">Encuentra tu próximo libro favorito</h2>
             <div class="search-form">
                 <div class="form-group">
                     <label for="title">Título</label>
@@ -308,255 +410,269 @@
                         <option value="self_help">Autoayuda</option>
                     </select>
                 </div>
-                <button id="searchButton" class="search-button">Buscar</button>
+                <button id="searchButton" class="search-button">
+                    <i class="ri-search-line"></i>
+                    <span>Buscar</span>
+                </button>
             </div>
         </div>
-        
+
         <div id="loading" class="loading">
             <div class="loading-spinner"></div>
             <p>Buscando libros...</p>
         </div>
-        
+
         <div id="resultsSection" class="results-section" style="display: none;">
-            <h2 class="results-title">Resultados de la búsqueda</h2>
+            <h2 class="login__title">Resultados de la búsqueda</h2>
             <div id="bookGrid" class="book-grid">
                 <!-- Los resultados de búsqueda se mostrarán aquí -->
             </div>
-            
+
             <div id="pagination" class="pagination">
                 <!-- La paginación se generará dinámicamente -->
             </div>
         </div>
-        
+
         <div id="noResults" class="no-results">
             <h3>No se encontraron resultados para tu búsqueda.</h3>
             <p>Intenta con otros términos o criterios de búsqueda.</p>
         </div>
-        
-        <div class="navigation-buttons">
-            <a href="/home" class="back-button">Volver al inicio</a>
+
+        <div class="action-buttons">
+            <a href="/home" class="btn-action btn-back">
+                <i class="ri-home-line"></i>
+                <span>Volver al inicio</span>
+            </a>
         </div>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchButton = document.getElementById('searchButton');
-            const titleInput = document.getElementById('title');
-            const authorInput = document.getElementById('author');
-            const subjectInput = document.getElementById('subject');
-            const bookGrid = document.getElementById('bookGrid');
-            const resultsSection = document.getElementById('resultsSection');
-            const noResults = document.getElementById('noResults');
-            const loading = document.getElementById('loading');
-            const pagination = document.getElementById('pagination');
-            
-            let currentPage = 1;
-            const itemsPerPage = 10;
-            let totalResults = 0;
-            let allBooks = [];
-            
-            searchButton.addEventListener('click', function() {
-                performSearch(1);
-            });
-            
-            // Permitir la búsqueda al presionar Enter en los campos de texto
-            [titleInput, authorInput].forEach(input => {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        performSearch(1);
-                    }
-                });
-            });
-            
-            function performSearch(page) {
-                const title = titleInput.value.trim();
-                const author = authorInput.value.trim();
-                const subject = subjectInput.value;
-                
-                if (title === '' && author === '' && subject === '') {
-                    alert('Por favor, ingresa al menos un criterio de búsqueda');
-                    return;
-                }
-                
-                // Mostrar loader
-                loading.style.display = 'block';
-                resultsSection.style.display = 'none';
-                noResults.style.display = 'none';
-                
-                // Construir la URL de búsqueda
-                let searchQuery = [];
-                
-                if (title) {
-                    searchQuery.push(`title=${encodeURIComponent(title)}`);
-                }
-                
-                if (author) {
-                    searchQuery.push(`author=${encodeURIComponent(author)}`);
-                }
-                
-                if (subject) {
-                    searchQuery.push(`subject=${encodeURIComponent(subject)}`);
-                }
-                
-                // Si hay título, autor o categoría específicos, usamos los parámetros correspondientes
-                // Si no, usamos un término de búsqueda general
-                let apiUrl;
-                if (searchQuery.length > 0) {
-                    apiUrl = `https://openlibrary.org/search.json?${searchQuery.join('&')}&page=${page}`;
-                } else {
-                    // Búsqueda general si no hay criterios específicos
-                    apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(title || author || '')}`;
-                }
-                
-                fetch(apiUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Error en la respuesta de la API');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Ocultar loader
-                        loading.style.display = 'none';
-                        
-                        if (data.docs && data.docs.length > 0) {
-                            // Guardar todos los libros y la página actual
-                            allBooks = data.docs;
-                            currentPage = page;
-                            totalResults = data.numFound;
-                            
-                            // Mostrar resultados
-                            displayBooks(allBooks);
-                            // Actualizar paginación
-                            updatePagination();
-                            
-                            // Mostrar sección de resultados
-                            resultsSection.style.display = 'block';
-                        } else {
-                            // Mostrar mensaje de no resultados
-                            noResults.style.display = 'block';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        loading.style.display = 'none';
-                        alert('Ocurrió un error al buscar los libros. Por favor, intenta de nuevo.');
-                    });
-            }
-            
-            function displayBooks(books) {
-                // Limpiar el contenedor de libros
-                bookGrid.innerHTML = '';
-                
-                // Mostrar los libros
-                books.forEach(book => {
-                    // Crear elemento de tarjeta para el libro
-                    const bookCard = document.createElement('div');
-                    bookCard.className = 'book-card';
-                    
-                    // Obtener la imagen de la portada si está disponible
-                    let coverUrl = '/api/placeholder/250/300';
-                    if (book.cover_i) {
-                        coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-                    }
-                    
-                    // Obtener el año de publicación si está disponible
-                    let publishYear = book.first_publish_year || (book.publish_year ? book.publish_year[0] : 'Desconocido');
-                    
-                    // Obtener autores si están disponibles
-                    let authors = book.author_name ? book.author_name.join(', ') : 'Autor desconocido';
-                    
-                    // Obtener descripción o usar un placeholder
-                    let description = 'No hay descripción disponible para este libro.';
-                    
-                    // Estructura HTML de la tarjeta
-                    bookCard.innerHTML = `
-                        <div class="book-cover">
-                            <img src="${coverUrl}" alt="Portada de ${book.title}" onerror="this.src='/api/placeholder/250/300'">
-                        </div>
-                        <div class="book-info">
-                            <h3 class="book-title">${book.title}</h3>
-                            <p class="book-author">${authors}</p>
-                            <p class="book-year">${publishYear}</p>
-                            <p class="book-description">${description}</p>
-                            <div class="book-actions">
-                                <button class="book-button details-button" data-key="${book.key}">Ver detalles</button>
-                                <button class="book-button recommend-button" data-key="${book.key}">Recomendar</button>
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Agregar evento para el botón de detalles
-                    bookCard.querySelector('.details-button').addEventListener('click', function() {
-                        const key = this.getAttribute('data-key');
-                        window.open(`https://openlibrary.org${key}`, '_blank');
-                    });
-                    
-                    // Agregar evento para el botón de recomendar (aquí puedes implementar tu propia lógica)
-                    bookCard.querySelector('.recommend-button').addEventListener('click', function() {
-                        const key = this.getAttribute('data-key');
-                        alert(`Libro recomendado: ${book.title}`);
-                        // Aquí podrías implementar la lógica para guardar la recomendación en tu backend
-                    });
-                    
-                    // Agregar la tarjeta al grid
-                    bookGrid.appendChild(bookCard);
-                });
-            }
-            
-            function updatePagination() {
-                // Limpiar paginación
-                pagination.innerHTML = '';
-                
-                // Calcular número total de páginas
-                const totalPages = Math.ceil(totalResults / itemsPerPage);
-                
-                // Si hay muchas páginas, mostrar solo un subconjunto
-                let startPage = Math.max(1, currentPage - 2);
-                let endPage = Math.min(totalPages, currentPage + 2);
-                
-                // Asegurar que siempre se muestren al menos 5 páginas si están disponibles
-                if (endPage - startPage < 4) {
-                    if (startPage === 1) {
-                        endPage = Math.min(5, totalPages);
-                    } else {
-                        startPage = Math.max(1, endPage - 4);
-                    }
-                }
-                
-                // Botón para primera página
-                if (startPage > 1) {
-                    addPaginationButton(1, '«');
-                }
-                
-                // Botones de páginas
-                for (let i = startPage; i <= endPage; i++) {
-                    addPaginationButton(i, i.toString(), i === currentPage);
-                }
-                
-                // Botón para última página
-                if (endPage < totalPages) {
-                    addPaginationButton(totalPages, '»');
-                }
-            }
-            
-            function addPaginationButton(page, text, isActive = false) {
-                const button = document.createElement('button');
-                button.className = 'pagination-button';
-                if (isActive) {
-                    button.classList.add('active');
-                }
-                button.textContent = text;
-                
-                button.addEventListener('click', function() {
-                    if (page !== currentPage) {
-                        performSearch(page);
-                    }
-                });
-                
-                pagination.appendChild(button);
-            }
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchButton = document.getElementById('searchButton');
+        const titleInput = document.getElementById('title');
+        const authorInput = document.getElementById('author');
+        const subjectInput = document.getElementById('subject');
+        const bookGrid = document.getElementById('bookGrid');
+        const resultsSection = document.getElementById('resultsSection');
+        const noResults = document.getElementById('noResults');
+        const loading = document.getElementById('loading');
+        const pagination = document.getElementById('pagination');
+
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let totalResults = 0;
+        let allBooks = [];
+
+        searchButton.addEventListener('click', function() {
+            performSearch(1);
         });
-    </script>
+
+        // Permitir la búsqueda al presionar Enter en los campos de texto
+        [titleInput, authorInput].forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch(1);
+                }
+            });
+        });
+
+        function performSearch(page) {
+            const title = titleInput.value.trim();
+            const author = authorInput.value.trim();
+            const subject = subjectInput.value;
+
+            if (title === '' && author === '' && subject === '') {
+                alert('Por favor, ingresa al menos un criterio de búsqueda');
+                return;
+            }
+
+            // Mostrar loader
+            loading.style.display = 'block';
+            resultsSection.style.display = 'none';
+            noResults.style.display = 'none';
+
+            // Construir la URL de búsqueda
+            let searchQuery = [];
+
+            if (title) {
+                searchQuery.push(`title=${encodeURIComponent(title)}`);
+            }
+
+            if (author) {
+                searchQuery.push(`author=${encodeURIComponent(author)}`);
+            }
+
+            if (subject) {
+                searchQuery.push(`subject=${encodeURIComponent(subject)}`);
+            }
+
+            // Si hay título, autor o categoría específicos, usamos los parámetros correspondientes
+            // Si no, usamos un término de búsqueda general
+            let apiUrl;
+            if (searchQuery.length > 0) {
+                apiUrl = `https://openlibrary.org/search.json?${searchQuery.join('&')}&page=${page}`;
+            } else {
+                // Búsqueda general si no hay criterios específicos
+                apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(title || author || '')}`;
+            }
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la respuesta de la API');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Ocultar loader
+                    loading.style.display = 'none';
+
+                    if (data.docs && data.docs.length > 0) {
+                        // Guardar todos los libros y la página actual
+                        allBooks = data.docs;
+                        currentPage = page;
+                        totalResults = data.numFound;
+
+                        // Mostrar resultados
+                        displayBooks(allBooks);
+                        // Actualizar paginación
+                        updatePagination();
+
+                        // Mostrar sección de resultados
+                        resultsSection.style.display = 'block';
+                    } else {
+                        // Mostrar mensaje de no resultados
+                        noResults.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    loading.style.display = 'none';
+                    alert('Ocurrió un error al buscar los libros. Por favor, intenta de nuevo.');
+                });
+        }
+
+        function displayBooks(books) {
+            // Limpiar el contenedor de libros
+            bookGrid.innerHTML = '';
+
+            // Mostrar los libros
+            books.forEach(book => {
+                // Crear elemento de tarjeta para el libro
+                const bookCard = document.createElement('div');
+                bookCard.className = 'book-card';
+
+                // Obtener la imagen de la portada si está disponible
+                let coverUrl = '/api/placeholder/250/300';
+                if (book.cover_i) {
+                    coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+                }
+
+                // Obtener el año de publicación si está disponible
+                let publishYear = book.first_publish_year || (book.publish_year ? book.publish_year[0] : 'Desconocido');
+
+                // Obtener autores si están disponibles
+                let authors = book.author_name ? book.author_name.join(', ') : 'Autor desconocido';
+
+                // Obtener descripción o usar un placeholder
+                let description = 'No hay descripción disponible para este libro.';
+
+                // Estructura HTML de la tarjeta
+                bookCard.innerHTML = `
+                    <div class="book-cover">
+                        <img src="${coverUrl}" alt="Portada de ${book.title}" onerror="this.src='/api/placeholder/250/300'">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">${authors}</p>
+                        <p class="book-year">${publishYear}</p>
+                        <p class="book-description">${description}</p>
+                        <div class="book-actions">
+                            <button class="book-button details-button" data-key="${book.key}">
+                                <i class="ri-information-line"></i> Ver detalles
+                            </button>
+                            <button class="book-button recommend-button" data-key="${book.key}">
+                                <i class="ri-star-line"></i> Recomendar
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // Agregar evento para el botón de detalles
+                bookCard.querySelector('.details-button').addEventListener('click', function() {
+                    const key = this.getAttribute('data-key');
+                    window.open(`https://openlibrary.org${key}`, '_blank');
+                });
+
+                // Agregar evento para el botón de recomendar
+                bookCard.querySelector('.recommend-button').addEventListener('click', function() {
+                    const key = this.getAttribute('data-key');
+                    alert(`Libro recomendado: ${book.title}`);
+                    // Aquí podrías implementar la lógica para guardar la recomendación en tu backend
+                });
+
+                // Agregar la tarjeta al grid
+                bookGrid.appendChild(bookCard);
+            });
+        }
+
+        function updatePagination() {
+            // Limpiar paginación
+            pagination.innerHTML = '';
+
+            // Calcular número total de páginas
+            const totalPages = Math.ceil(totalResults / itemsPerPage);
+
+            // Si hay muchas páginas, mostrar solo un subconjunto
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+
+            // Asegurar que siempre se muestren al menos 5 páginas si están disponibles
+            if (endPage - startPage < 4) {
+                if (startPage === 1) {
+                    endPage = Math.min(5, totalPages);
+                } else {
+                    startPage = Math.max(1, endPage - 4);
+                }
+            }
+
+            // Botón para primera página
+            if (startPage > 1) {
+                addPaginationButton(1, '«');
+            }
+
+            // Botones de páginas
+            for (let i = startPage; i <= endPage; i++) {
+                addPaginationButton(i, i.toString(), i === currentPage);
+            }
+
+            // Botón para última página
+            if (endPage < totalPages) {
+                addPaginationButton(totalPages, '»');
+            }
+        }
+
+        function addPaginationButton(page, text, isActive = false) {
+            const button = document.createElement('button');
+            button.className = 'pagination-button';
+            if (isActive) {
+                button.classList.add('active');
+            }
+            button.textContent = text;
+
+            button.addEventListener('click', function() {
+                if (page !== currentPage) {
+                    performSearch(page);
+                }
+            });
+
+            pagination.appendChild(button);
+        }
+    });
+</script>
+
+<!--=============== BOOTSTRAP JS ===============-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

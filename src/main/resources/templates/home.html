@@ -16,120 +16,227 @@
     <link rel="icon" type="image/x-icon" href="static/img/libreria-digital.png">
 
     <title>Sistema de Recomendaciones</title>
+
+    <style>
+        :root {
+            --primary-color: #2b4e90;
+            --secondary-color: #0d6efd;
+            --accent-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #fff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .login__img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 1rem;
+        }
+
+        .login__title {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .recommendation-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 0.8rem;
+            text-align: center;
+        }
+
+        .card-title {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2.5rem;
+            gap: 1.2rem;
+        }
+
+        .btn-action {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .btn-admin {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-admin:hover {
+            background-color: #c82333;
+            color: white;
+        }
+
+        .btn-logout {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-logout:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .login__title {
+                font-size: 1.8rem;
+            }
+
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .recommendation-card {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .card-image {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .login__title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .card-image {
+                height: 240px;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .btn-action {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="col-12" >
+<div class="main-container">
+    <img src="static/img/login-bg.png" alt="login image" class="login__img">
 
-    <img src="static/img/login-bg.png" alt="login image" class="login__img" style="height: 109%">
+    <div class="content-wrapper">
+        <h1 class="login__title">Sistema de Recomendaciones</h1>
 
+        <div class="cards-container">
+            <!-- Tarjeta de Películas -->
+            <a href="/peliculas" class="recommendation-card" style="text-decoration: none;">
+                <img class="card-image" src="https://imgs.search.brave.com/aOuIlbzGaW7XeWH98WhQ_6FBIEGvNjOqnjUH49bbkVQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1qUTVNelF4/WlRFdE1tRTFZeTAw/TmpabExUazVPREl0/TmpJM01XSXhNamsx/TTJVNVhrRXlYa0Zx/Y0djQC5qcGc" alt="Películas">
+                <div class="card-overlay">
+                    <h2 class="card-title">Películas</h2>
+                </div>
+            </a>
 
-        <!--
-
-        <p class="welcome-message" sec:authentication="name">Bienvenido, Usuario</p>-->
-    <br>
-    <div class="row conts_rec" style="margin-left: 25px; margin-right: 25px; ">
-        <h1 class="login__title" >Sistema de Recomendaciones</h1>
-
-        <div class="col-md-4 " style="margin-right: 0px; margin-left: 0px; text-align: center; width: 110px">
+            <!-- Tarjeta de Libros -->
+            <a href="/libros" class="recommendation-card" style="text-decoration: none;">
+                <img class="card-image" src="https://imgs.search.brave.com/IMNOaq2IhQG2hhzdQvj-xiYAiNmH2nMEjvHwWaeDEvM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z29udmlsbC5jb20u/bXgvaW1hZ2VuZXMv/OTc4NjUwMC85Nzg2/NTAwNzM3MjYuSlBH" alt="Libros">
+                <div class="card-overlay">
+                    <h2 class="card-title">Libros</h2>
+                </div>
+            </a>
         </div>
 
-        <a class="col-md-4" href="/peliculas" style="color: white; margin-left: 0px;">
-            <div class="col-12 conts_pro" style="text-align: center;">
-                <h1 class="login__title" >Películas</h1>
-                <img width="200px" src="https://imgs.search.brave.com/aOuIlbzGaW7XeWH98WhQ_6FBIEGvNjOqnjUH49bbkVQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1qUTVNelF4/WlRFdE1tRTFZeTAw/TmpabExUazVPREl0/TmpJM01XSXhNamsx/TTJVNVhrRXlYa0Zx/Y0djQC5qcGc" />
+        <div class="action-buttons">
+            <a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin/usuarios" class="btn-action btn-admin">
+                <i class="ri-admin-line"></i>
+                <span>Administración de Usuarios</span>
+            </a>
 
-                <!--
-                <div class="login__content">
-                    Botones del menú
-                    <a href="/libros" class="login__button menu-button">
-                        <i class="ri-book-line login__icon"></i>
-                        <span>Libros</span>
-                    </a
-
-
-                    <a href="/peliculas" class="login__button menu-button">
-                        <i class="ri-movie-2-line login__icon"></i>
-                        <span>Películas</span>
-                    </a>
-
-                    <a href="/perfil" class="login__button menu-button">
-                        <i class="ri-user-line login__icon"></i>
-                        <span>Mi Perfil</span>
-                    </a>
-
-                    Botón de administración (solo para ADMIN)
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin/usuarios" class="login__button menu-button admin-button">
-                        <i class="ri-admin-line login__icon"></i>
-                        <span>Administración de Usuarios</span>
-                    </a>
-                </div>
-
-                Botón de cerrar sesión
-                <a href="/logout" class="login__register">
-                    <i class="ri-logout-box-r-line"></i>
-                    <span>Cerrar Sesión</span>
-                </a>
-                -->
-            </div>
-        </a>
-
-        <div class="col-md-4 " style="margin-right: 0px; margin-left: 0px; text-align: center; width: 200px">
+            <a href="/logout" class="btn-action btn-logout">
+                <i class="ri-logout-box-r-line"></i>
+                <span>Cerrar Sesión</span>
+            </a>
         </div>
-
-        <a class="col-md-4" href="/libros" style="color: white; margin-left: 0px">
-            <div class="col-12 conts_pro" style="margin-right: 0px; margin-left: 0px; text-align: center;">
-                <h1 class="login__title" >Libros</h1>
-                <img width="180px" src="https://imgs.search.brave.com/IMNOaq2IhQG2hhzdQvj-xiYAiNmH2nMEjvHwWaeDEvM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z29udmlsbC5jb20u/bXgvaW1hZ2VuZXMv/OTc4NjUwMC85Nzg2/NTAwNzM3MjYuSlBH" />
-
-                <!--
-               <div class="login__content">
-                   Botones del menú
-                    <a href="/libros" class="login__button menu-button">
-                        <i class="ri-book-line login__icon"></i>
-                        <span>Libros</span>
-                    </a>
-
-                    <a href="/peliculas" class="login__button menu-button">
-                        <i class="ri-movie-2-line login__icon"></i>
-                        <span>Películas</span>
-                    </a>
-
-                    <a href="/perfil" class="login__button menu-button">
-                        <i class="ri-user-line login__icon"></i>
-                        <span>Mi Perfil</span>
-                    </a>
-
-                     Botón de administración (solo para ADMIN)
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin/usuarios" class="login__button menu-button admin-button">
-                        <i class="ri-admin-line login__icon"></i>
-                        <span>Administración de Usuarios</span>
-                    </a>
-                </div>
-
-                 Botón de cerrar sesión
-                <a href="/logout" class="login__register">
-                    <i class="ri-logout-box-r-line"></i>
-                    <span>Cerrar Sesión</span>
-                </a>
-                -->
-            </div>
-        </a>
-
-        <a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin/usuarios" class="login__register  menu-button admin-button">
-            <i class="ri-admin-line login__icon"></i>
-            <span>Administración de Usuarios</span>
-        </a>
-
-        <a href="/logout" class="login__register">
-            <i class="ri-logout-box-r-line"></i>
-            <span>Cerrar Sesión</span>
-        </a>
-
-
-
     </div>
 </div>
 
+<!--=============== BOOTSTRAP JS ===============-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!--=============== MAIN JS ===============-->
 <script src="static/js/main.js"></script>
 </body>
