@@ -1,10 +1,11 @@
-# Práctica 1
-
 # Sistema de Búsqueda y Recomendación de Libros y Películas
 Este proyecto consiste en el desarrollo de un sistema web para la búsqueda y recomendación personalizada de libros y películas, implementado con Spring Boot.
 
 ## Descripción del proyecto
 Este sistema tiene como objetivo ofrecer a los usuarios una plataforma para descubrir y recibir recomendaciones de libros y películas adaptadas a sus gustos y preferencias. La aplicación implementa un sistema de autenticación robusto y gestión de privilegios de usuario, sentando las bases para la posterior incorporación de algoritmos de recomendación avanzados y funcionalidades adicionales.
+
+  
+# Práctica 1
 
 ## Estado actual del proyecto
 ### Fase 1: Implemetada ✅
@@ -287,7 +288,6 @@ Las variables de entorno se configuran en el archivo `docker-compose.yml` y se p
 4. Crear el controlador en el paquete `controller`.  
 5. Desarrollar las plantillas **Thymeleaf** en el directorio `templates`.  
 
-
 ### 🔐 Para Gestionar la Seguridad
 
 - Configurar roles y permisos en `SecurityConfig.java`.  
@@ -317,6 +317,277 @@ Las variables de entorno se configuran en el archivo `docker-compose.yml` y se p
 
 ### Admin
 ![image](https://github.com/user-attachments/assets/603416c7-f3b7-4e67-8dcb-5458f19708d7)
+
+
+# Práctica 2
+
+## Glosario de Términos
+
+- API: Interfaz de Programación de Aplicaciones, permite obtener datos de fuentes externas.
+
+- ETL: Proceso de Extracción, Transformación y Carga de datos.
+
+- Recomendación Multimodal: Sugerencias que abarcan diferentes tipos de contenido (libros, series, videojuegos, anime).
+
+- Almacén de datos: Sistema para el almacenamiento centralizado de información con fines analíticos.
+
+## Descripción de los Usuarios del Sistema
+- Usuario Registrado: Persona que se registra en la plataforma para acceder a recomendaciones personalizadas.
+- Administrador: Encargado de gestionar contenido, usuarios, configuración del sistema y monitoreo de logs.
+
+## Restricciones y Suposiciones
+- Se asume disponibilidad de conexión a internet para consumir APIs externas.
+- Las APIs públicas podrían tener límites de uso por día.
+- El sistema requerirá procesos programados para cargar datos ETL a intervalos regulares.
+
+## Casos de uso
+### Actores:
+- Usuario Registrado
+- Administrador
+
+### Casos de Uso Identificados:
+- Registrarse en el sistema
+- Iniciar sesión
+- Ver perfil de usuario
+- Editar perfil
+- Cambiar tema claro/oscuro
+- Buscar contenido
+- Ver recomendaciones personalizadas
+- Ver detalles de un contenido
+- Guardar contenido como favorito
+- Ver historial de búsquedas
+- Reportar contenido incorrecto
+- Configurar preferencias de usuario
+- Agregar API de terceros (admin)
+- Ejecutar procesos ETL (admin)
+- Ver reportes analíticos (admin)
+- Gestionar usuarios (admin)
+
+## 📋 Especificación de casos de uso
+
+### **CU01 - Registrarse en el sistema**  
+
+| **Campo**            | **Detalle**                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| **ID**               | CU01                                                                       |
+| **Nombre**           | Registrarse en el sistema                                                  |
+| **Actor**            | Usuario                                                                    |
+| **Descripción**      | Permite al usuario registrarse para usar el sistema y obtener recomendaciones personalizadas. |                                 
+| **Precondiciones**   | No haber iniciado sesión.                                                  |
+| **Postcondiciones**  | Usuario registrado y sesión iniciada.                                      |
+
+#### **Flujo Principal**:  
+1. Usuario accede a la página de registro.  
+2. Llena los campos obligatorios (nombre, email, contraseña).  
+3. El sistema valida y crea la cuenta.  
+
+#### **Flujos Alternativos**:  
+- **FA1**: Email ya registrado → El sistema muestra mensaje de error.  
+
+#### **Requisitos Especiales**:  
+- Validación de email y contraseña segura (mínimo 8 caracteres, mayúsculas, números).  
+
+---
+
+### **CU02 - Iniciar sesión**
+
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU02                                                                       |
+| **Nombre**        | Iniciar sesión                                                             |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Permite al usuario acceder a su cuenta.                                    |
+| **Precondición**  | Tener una cuenta registrada.                                               |
+| **Postcondición** | Sesión iniciada y acceso a funcionalidades.                                |
+
+#### **Flujo Principal**:  
+1. Usuario ingresa email y contraseña.
+2. El sistema valida las credenciales.
+3. Acceso concedido.
+
+#### **Flujos Alternativos**:  
+- FA1: Credenciales incorrectas → Mensaje de error.
+- FA2: Cuenta no existe → Redirigir a registro.
+
+----
+### **CU03 -  Ver perfil de usuario**
+
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU03                                                                       |
+| **Nombre**        | Ver perfil de usuario                                                      |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Visualizar información personal y actividad.                                |
+| **Precondición**  | Sesión iniciada.                                                           |
+| **Postcondición** | Perfil mostrado.                                                           |
+
+#### **Flujo Principal**:
+1. Usuario navega a "Mi perfil".
+2. El sistema muestra datos (nombre, email, favoritos, historial).
+
+---
+
+### **CU04 -  Editar perfil**
+
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU04                                                                       |
+| **Nombre**        | Editar perfil                                                              |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Modificar información personal.                                            |
+| **Precondición**  | Sesión iniciada.                                                           |
+| **Postcondición** | Datos actualizados.                                                        |
+
+**Flujo Principal**:
+1. Usuario edita campos (ej: nombre, foto).
+2. Guarda cambios.
+3. Sistema valida y actualiza.
+
+**Flujos Alternativos**:
+- FA1: Campos inválidos → Error.
+---
+### **CU05 -  Cambiar tema**
+
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU05                                                                       |
+| **Nombre**        | Cambiar tema                                                               |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Alternar entre modos de visualización.                                     |
+| **Precondición**  | Sesión iniciada.                                                           |
+| **Postcondición** | Tema aplicado en la interfaz.                                              |
+
+**Flujo Principal**:
+1. Usuario selecciona "Tema oscuro/claro" en configuración.
+2. Sistema aplica el cambio.
+
+---
+### **CU06 - Buscar contenido**
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU06                                                                       |
+| **Nombre**        | Buscar contenido                                                           |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Encontrar contenido por palabras clave.                                    |
+| **Precondición**  | Ninguna.                                                                   |
+| **Postcondición** | Resultados mostrados.                                                      |
+
+**Flujo Principal**:
+1. Usuario ingresa término de búsqueda.
+2. Sistema muestra resultados relevantes.
+
+**Flujos Alternativos**:
+- FA1: Sin resultados → Mensaje "No encontrado".
+---
+### **CU07 - Ver recomendaciones personalizadas**
+
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU07                                                                       |
+| **Nombre**        | Ver recomendaciones personalizadas                                         |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Muestra contenido recomendado basado en preferencias y actividad del usuario. |
+| **Precondición**  | Sesión iniciada y preferencias configuradas.                               |
+| **Postcondición** | Lista de recomendaciones generada.                                         |
+
+**Flujo Principal**:
+1. Usuario accede a la sección "Recomendaciones".
+2. El sistema filtra contenido según historial y preferencias.
+3. Muestra cards con títulos relevantes.
+
+**Flujos Alternativos**:
+- FA1: Sin datos suficientes → Recomendaciones genéricas.
+---
+### **CU08 - Ver detalles de un contenido**
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU08                                                                       |
+| **Nombre**        | Ver detalles de contenido                                                  |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Muestra información extendida (sinopsis, rating, etc.) de un item.         |
+| **Precondición**  | Contenido existente en el sistema.                                         |
+| **Postcondición** | Detalles cargados en pantalla.                                             |
+
+**Flujo Principal**:
+1. Usuario selecciona un contenido.
+2. Sistema despliega metadata + botones (favorito, reportar).
+---
+### **CU09 - Guardar contenido como favorito**
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU09                                                                       |
+| **Nombre**        | Guardar favorito                                                           |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Añade un contenido a la lista "Favoritos".                                 |
+| **Precondición**  | Sesión iniciada y contenido visto.                                         |
+| **Postcondición** | Item almacenado en favoritos.                                              |
+
+**Flujo Principal**:
+1. Usuario hace clic en "❤️ Guardar".
+2. Sistema actualiza la lista.
+
+**Flujos Alternativos**:
+- FA1: Ya está en favoritos → Opción para remover.
+---
+### **CU10 - Ver historial de búsquedas**
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU10                                                                       |
+| **Nombre**        | Ver historial                                                              |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Muestra términos buscados previamente.                                     |
+| **Precondición**  | Tener búsquedas realizadas.                                                |
+| **Postcondición** | Historial cargado.                                                         |
+
+**Flujo Principal**:
+1. Usuario navega a "Historial".
+2. Sistema lista búsquedas ordenadas por fecha.
+
+**Requisitos Especiales**:
+- Opción para borrar historial.
+---
+### **CU11 - Reportar contenido incorrecto**
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU11                                                                       |
+| **Nombre**        | Reportar contenido                                                         |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Envía una alerta sobre contenido inapropiado/erróneo.                      |
+| **Precondición**  | Contenido visible.                                                         |
+| **Postcondición** | Reporte enviado a admin.                                                   |
+
+**Flujo Principal**:
+1. Usuario hace clic en "Reportar".
+2. Selecciona motivo (ej: "Información falsa").
+3. Sistema notifica al admin.
+---
+### **CU12 - Configurar preferencias de usuario**
+| Campo             | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **ID**            | CU12                                                                       |
+| **Nombre**        | Configurar preferencias                                                    |
+| **Actor**         | Usuario                                                                    |
+| **Descripción**   | Personaliza categorías de interés (ej: géneros, idiomas).                  |
+| **Precondición**  | Sesión iniciada.                                                           |
+| **Postcondición** | Preferencias guardadas.                                                    |
+
+**Flujo Principal**:
+1. Usuario edita preferencias en "Ajustes".
+2. Sistema aplica cambios a recomendaciones.
+
+## Priorización del Caso de Uso Principal
+
+### Caso de uso principal elegido: CU-03: Buscar contenido (películas y libros)
+
+**Justificación:**
+- Valor para el usuario: Es la función base del sistema, la puerta de entrada a todas las recomendaciones.
+- Complejidad técnica: Implica consumo de múltiples APIs, procesamiento, posibles filtros.
+- Dependencias: Se relaciona directamente con recomendaciones, favoritos, y registros de búsqueda.
+Este caso de uso representa el corazón del sistema, ya que sin él no se puede acceder al resto de funcionalidades clave.
+
+## Diagramas de Casos de Uso 
+![image](https://github.com/user-attachments/assets/50609aed-063e-4d69-80cd-917b0d8a7c2e)
+
 
 ## 📬 Contacto
 
