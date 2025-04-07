@@ -1,3 +1,221 @@
+/*!*=============== GOOGLE FONTS ===============*!*/
+/*@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");*/
+/*!*=============== VARIABLES CSS ===============*!*/
+/*:root {*/
+/*  !*========== Colors ==========*!*/
+/*  !*Color mode HSL(hue, saturation, lightness)*!*/
+/*  --white-color: hsl(0, 0%, 100%);*/
+/*  --black-color: hsl(0, 0%, 0%);*/
+/*  !*========== Font and typography ==========*!*/
+/*  !*.5rem = 8px | 1rem = 16px ...*!*/
+/*  --body-font: "Poppins", sans-serif;*/
+/*  --h1-font-size: 1.75rem;*/
+/*  --normal-font-size: 1rem;*/
+/*  --small-font-size: .813rem;*/
+/*  !*========== Font weight ==========*!*/
+/*  --font-medium: 500;*/
+/*}*/
+
+/*!*=============== BASE ===============*!*/
+/** {*/
+/*  box-sizing: border-box;*/
+/*  padding: 0;*/
+/*  margin: 0;*/
+/*}*/
+
+/*body,*/
+/*input,*/
+/*button {*/
+/*  font-size: var(--normal-font-size);*/
+/*  font-family: var(--body-font);*/
+/*}*/
+
+/*body {*/
+/*  color: var(--white-color);*/
+/*}*/
+
+/*input,*/
+/*button {*/
+/*  border: none;*/
+/*  outline: none;*/
+/*}*/
+
+/*a {*/
+/*  text-decoration: none;*/
+/*}*/
+
+/*img {*/
+/*  max-width: 100%;*/
+/*  height: auto;*/
+/*}*/
+
+/*!*=============== LOGIN ===============*!*/
+/*.login {*/
+/*  position: relative;*/
+/*  height: 100vh;*/
+/*  display: grid;*/
+/*  align-items: center;*/
+/*}*/
+/*.login__img {*/
+/*  position: absolute;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  object-fit: cover;*/
+/*  object-position: center;*/
+/*}*/
+/*.login__form {*/
+/*  position: relative;*/
+/*  background-color: hsla(0, 0%, 10%, 0.1);*/
+/*  border: 2px solid var(--white-color);*/
+/*  margin-inline: 1.5rem;*/
+/*  padding: 2.5rem 1.5rem;*/
+/*  border-radius: 1rem;*/
+/*  backdrop-filter: blur(8px);*/
+/*}*/
+
+/*.conts_rec {*/
+/*  !*position: relative;*!*/
+/*  background-color: hsla(0, 0%, 10%, 0.1);*/
+/*  border: 2px solid var(--white-color);*/
+/*  !*margin-inline: 1.5rem;*!*/
+/*  padding: 2.5rem 1.5rem;*/
+/*  border-radius: 1rem;*/
+/*  backdrop-filter: blur(8px);*/
+/*}*/
+
+/*.conts_pro {*/
+/*  !*position: relative;*!*/
+/*  background-color: hsla(0, 0%, 10%, 0.1);*/
+/*  border: 2px solid var(--white-color);*/
+/*  !*margin-inline: 1.5rem;*!*/
+/*  padding: 2.5rem 1.5rem;*/
+/*  border-radius: 1rem;*/
+/*  backdrop-filter: blur(8px);*/
+/*}*/
+
+/*.login__title {*/
+/*  text-align: center;*/
+/*  font-size: var(--h1-font-size);*/
+/*  font-weight: var(--font-medium);*/
+/*  margin-bottom: 2rem;*/
+/*}*/
+/*.login__content, .login__box {*/
+/*  display: grid;*/
+/*}*/
+/*.login__content {*/
+/*  row-gap: 1.75rem;*/
+/*  margin-bottom: 1.5rem;*/
+/*}*/
+/*.login__box {*/
+/*  grid-template-columns: max-content 1fr;*/
+/*  align-items: center;*/
+/*  column-gap: 0.75rem;*/
+/*  border-bottom: 2px solid var(--white-color);*/
+/*}*/
+/*.login__icon, .login__eye {*/
+/*  font-size: 1.25rem;*/
+/*}*/
+/*.login__input {*/
+/*  width: 100%;*/
+/*  padding-block: 0.8rem;*/
+/*  background: none;*/
+/*  color: var(--white-color);*/
+/*  position: relative;*/
+/*  z-index: 1;*/
+/*}*/
+/*.login__box-input {*/
+/*  position: relative;*/
+/*}*/
+/*.login__label {*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 13px;*/
+/*  font-weight: var(--font-medium);*/
+/*  transition: top 0.3s, font-size 0.3s;*/
+/*}*/
+/*.login__eye {*/
+/*  position: absolute;*/
+/*  right: 0;*/
+/*  top: 18px;*/
+/*  z-index: 10;*/
+/*  cursor: pointer;*/
+/*}*/
+/*.login__box:nth-child(2) input {*/
+/*  padding-right: 1.8rem;*/
+/*}*/
+/*.login__check, .login__check-group {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*}*/
+/*.login__check {*/
+/*  margin-bottom: 1.5rem;*/
+/*}*/
+/*.login__check-label, .login__forgot, .login__register {*/
+/*  font-size: var(--small-font-size);*/
+/*}*/
+/*.login__check-group {*/
+/*  column-gap: 0.5rem;*/
+/*}*/
+/*.login__check-input {*/
+/*  width: 16px;*/
+/*  height: 16px;*/
+/*}*/
+/*.login__forgot {*/
+/*  color: var(--white-color);*/
+/*}*/
+/*.login__forgot:hover {*/
+/*  text-decoration: underline;*/
+/*}*/
+/*.login__button {*/
+/*  width: 100%;*/
+/*  padding: 1rem;*/
+/*  border-radius: 0.5rem;*/
+/*  background-color: var(--white-color);*/
+/*  font-weight: var(--font-medium);*/
+/*  cursor: pointer;*/
+/*  margin-bottom: 2rem;*/
+/*}*/
+/*.login__register {*/
+/*  text-align: center;*/
+/*}*/
+/*.login__register a {*/
+/*  color: var(--white-color);*/
+/*  font-weight: var(--font-medium);*/
+/*}*/
+/*.login__register a:hover {*/
+/*  text-decoration: underline;*/
+/*}*/
+
+/*!* Input focus move up label *!*/
+/*.login__input:focus + .login__label {*/
+/*  top: -12px;*/
+/*  font-size: var(--small-font-size);*/
+/*}*/
+
+/*!* Input focus sticky top label *!*/
+/*.login__input:not(:placeholder-shown).login__input:not(:focus) + .login__label {*/
+/*  top: -12px;*/
+/*  font-size: var(--small-font-size);*/
+/*}*/
+
+/*!*=============== BREAKPOINTS ===============*!*/
+/*!* For medium devices *!*/
+/*@media screen and (min-width: 576px) {*/
+/*  .login {*/
+/*    justify-content: center;*/
+/*  }*/
+/*  .login__form {*/
+/*    width: 432px;*/
+/*    padding: 4rem 3rem 3.5rem;*/
+/*    border-radius: 1.5rem;*/
+/*  }*/
+/*  .login__title {*/
+/*    font-size: 2rem;*/
+/*  }*/
+/*}*/
+
+
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 /*=============== VARIABLES CSS ===============*/
@@ -6,6 +224,13 @@
   /*Color mode HSL(hue, saturation, lightness)*/
   --white-color: hsl(0, 0%, 100%);
   --black-color: hsl(0, 0%, 0%);
+
+  /* Theme colors */
+  --primary-color: var(--white-color);
+  --secondary-color: var(--black-color);
+  --background-opacity: hsla(0, 0%, 10%, 0.1);
+  --border-color: var(--black-color); /* Cambiado a negro para el tema claro */
+
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Poppins", sans-serif;
@@ -14,6 +239,14 @@
   --small-font-size: .813rem;
   /*========== Font weight ==========*/
   --font-medium: 500;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+  --primary-color: var(--black-color);
+  --secondary-color: var(--white-color);
+  --background-opacity: hsla(0, 0%, 90%, 0.1);
+  --border-color: var(--white-color); /* Cambiado a blanco para el tema oscuro */
 }
 
 /*=============== BASE ===============*/
@@ -31,7 +264,8 @@ button {
 }
 
 body {
-  color: var(--white-color);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 input,
@@ -49,6 +283,17 @@ img {
   height: auto;
 }
 
+/*=============== THEME TOGGLE ===============*/
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
 /*=============== LOGIN ===============*/
 .login {
   position: relative;
@@ -62,11 +307,17 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: brightness(1);
 }
+
+[data-theme="dark"] .login__img {
+  filter: brightness(0.7) invert(1);
+}
+
 .login__form {
   position: relative;
-  background-color: hsla(0, 0%, 10%, 0.1);
-  border: 2px solid var(--white-color);
+  background-color: var(--background-opacity);
+  border: 2px solid var(--border-color); /* Usará el color definido en las variables */
   margin-inline: 1.5rem;
   padding: 2.5rem 1.5rem;
   border-radius: 1rem;
@@ -74,20 +325,16 @@ img {
 }
 
 .conts_rec {
-  /*position: relative;*/
-  background-color: hsla(0, 0%, 10%, 0.1);
-  border: 2px solid var(--white-color);
-  /*margin-inline: 1.5rem;*/
+  background-color: var(--background-opacity);
+  border: 2px solid var(--border-color);
   padding: 2.5rem 1.5rem;
   border-radius: 1rem;
   backdrop-filter: blur(8px);
 }
 
 .conts_pro {
-  /*position: relative;*/
-  background-color: hsla(0, 0%, 10%, 0.1);
-  border: 2px solid var(--white-color);
-  /*margin-inline: 1.5rem;*/
+  background-color: var(--background-opacity);
+  border: 2px solid var(--border-color);
   padding: 2.5rem 1.5rem;
   border-radius: 1rem;
   backdrop-filter: blur(8px);
@@ -98,6 +345,7 @@ img {
   font-size: var(--h1-font-size);
   font-weight: var(--font-medium);
   margin-bottom: 2rem;
+  color: var(--secondary-color); /* Asegura el color correcto según el tema */
 }
 .login__content, .login__box {
   display: grid;
@@ -110,16 +358,17 @@ img {
   grid-template-columns: max-content 1fr;
   align-items: center;
   column-gap: 0.75rem;
-  border-bottom: 2px solid var(--white-color);
+  border-bottom: 2px solid var(--border-color); /* Usará el color definido en las variables */
 }
 .login__icon, .login__eye {
   font-size: 1.25rem;
+  color: var(--secondary-color);
 }
 .login__input {
   width: 100%;
   padding-block: 0.8rem;
   background: none;
-  color: var(--white-color);
+  color: var(--secondary-color);
   position: relative;
   z-index: 1;
 }
@@ -132,6 +381,7 @@ img {
   top: 13px;
   font-weight: var(--font-medium);
   transition: top 0.3s, font-size 0.3s;
+  color: var(--secondary-color);
 }
 .login__eye {
   position: absolute;
@@ -162,7 +412,7 @@ img {
   height: 16px;
 }
 .login__forgot {
-  color: var(--white-color);
+  color: var(--secondary-color);
 }
 .login__forgot:hover {
   text-decoration: underline;
@@ -171,16 +421,18 @@ img {
   width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: var(--white-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   font-weight: var(--font-medium);
   cursor: pointer;
   margin-bottom: 2rem;
 }
 .login__register {
   text-align: center;
+  color: var(--secondary-color);
 }
 .login__register a {
-  color: var(--white-color);
+  color: var(--secondary-color);
   font-weight: var(--font-medium);
 }
 .login__register a:hover {
@@ -197,6 +449,15 @@ img {
 .login__input:not(:placeholder-shown).login__input:not(:focus) + .login__label {
   top: -12px;
   font-size: var(--small-font-size);
+}
+
+/* Aumentar la opacidad del fondo del formulario para mejor contraste */
+.login__form {
+  background-color: hsla(0, 0%, 100%, 0.25);
+}
+
+[data-theme="dark"] .login__form {
+  background-color: hsla(0, 0%, 0%, 0.25);
 }
 
 /*=============== BREAKPOINTS ===============*/
