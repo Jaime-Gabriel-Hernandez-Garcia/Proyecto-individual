@@ -588,6 +588,29 @@ Este caso de uso representa el corazón del sistema, ya que sin él no se puede 
 ## Diagramas de Casos de Uso 
 ![image](https://github.com/user-attachments/assets/50609aed-063e-4d69-80cd-917b0d8a7c2e)
 
+## 📺Pantallas Ejemplos
+### Login Tema-Claro
+![image](https://github.com/user-attachments/assets/9c18879b-5561-4d6e-95a2-0a5ad4b13fe3)
+
+### Login Tema-Oscuro
+![image](https://github.com/user-attachments/assets/28d5cc65-f138-43cf-a2cc-7e314f8b8e4a)
+
+### Registro Tema-Claro
+![image](https://github.com/user-attachments/assets/b7bef73e-3c21-4047-aa5e-8a970ae6015e)
+
+### Registro Tema-Oscuro
+![image](https://github.com/user-attachments/assets/f35b1d39-0f4b-459f-b67f-a4708827c2da)
+
+### Funcionamiento de Caso Principal Películas
+![image](https://github.com/user-attachments/assets/9eaf4ee1-48fa-40f3-9c46-d3fe63b479d3)
+![image](https://github.com/user-attachments/assets/66361ad0-9b28-4869-92d9-fec775f3230b)
+![image](https://github.com/user-attachments/assets/614d5095-5458-442a-9c62-5ca8c7d916e4)
+
+### Funcionamiento de Caso Principal Libros
+![image](https://github.com/user-attachments/assets/9eaf4ee1-48fa-40f3-9c46-d3fe63b479d3)
+![image](https://github.com/user-attachments/assets/2ae3d379-2f7e-438c-be2c-51f43954aa13)
+![image](https://github.com/user-attachments/assets/92de18fe-9bce-4590-993c-5bdfc6362bbf)
+
 
 ## 📬 Contacto
 
